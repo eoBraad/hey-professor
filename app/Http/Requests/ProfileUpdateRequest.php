@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
+use Illuminate\Contracts\Validation\Rule as ContractRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Contracts\Validation\Rule as ContractRule;
 
 class ProfileUpdateRequest extends FormRequest
 {
