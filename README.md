@@ -12,6 +12,7 @@ Hey professor is a project with the aim of facilitating the interaction between 
 - Blade components
 - Migrations
 - kanban and sprint concept
+- Git Actions
 
 ## Tecnologies 
 
