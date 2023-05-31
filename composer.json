@@ -32,7 +32,7 @@
         },
 
         "files": [
-            "app/support/functions.php"
+            "app/Support/Functions.php"
         ]
     },
     "autoload-dev": {
