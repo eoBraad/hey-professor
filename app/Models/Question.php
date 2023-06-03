@@ -19,4 +19,10 @@ class Question extends Model
     protected $casts = [
         'draft' => 'boolean',
     ];
+
+    public function publish(): void
+    {
+        $this->draft = false;
+        $this->save();
+    }
 }
