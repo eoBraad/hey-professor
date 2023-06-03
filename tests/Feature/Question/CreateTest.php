@@ -10,7 +10,8 @@ it('shold be able create a new question bigger than 255 characters', function ()
     actingAs($user);
     // Act :: Agir
     $request = post(route('question.store'), [
-        'question' => str_repeat('*', 256) . '?',
+        'question'   => str_repeat('*', 256) . '?',
+        'created_by' => $user->id,
     ]);
 
     // Assert :: Verificar
