@@ -15,4 +15,8 @@ class Question extends Model
     {
         return $this->hasMany(Vote::class);
     }
+
+    protected $casts = [
+        'draft' => 'boolean',
+    ];
 }
