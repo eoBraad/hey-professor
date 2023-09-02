@@ -70,4 +70,9 @@ class User extends Authenticatable implements MustVerifyEmail
             'unlike' => 1,
         ]);
     }
+
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class, 'created_by');
+    }
 }

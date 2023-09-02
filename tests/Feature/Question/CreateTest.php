@@ -10,7 +10,8 @@ it('shold be able create a new question bigger than 255 characters', function ()
     actingAs($user);
     // Act :: Agir
     $request = post(route('question.store'), [
-        'question' => str_repeat('*', 256) . '?',
+        'question'   => str_repeat('*', 256) . '?',
+        'created_by' => $user->id,
     ]);
 
     // Assert :: Verificar
@@ -55,4 +56,24 @@ it('should have at least 10 characters', function () {
     $request->assertSessionHasErrors(['question' => __('validation.min.string', ['min' => 10, 'attribute' => 'question'])]);
     assertDatabaseCount('questions', 0);
 
+});
+
+it("should create as a draft all the time", function () {
+    // Arrange :: Preparar
+    $user = User::factory()->create();
+    actingAs($user);
+
+    // Act :: Agir
+    $request = post(route('question.store'), [
+        'question' => str_repeat('*', 256) . '?',
+    ]);
+
+    // Assert :: Verificar
+    assertDatabaseHas('questions', ['question' => str_repeat('*', 256) . '?', 'draft' => true]);
+});
+
+test('only authenticated users can create a question', function () {
+    post(route('question.store'), [
+        'question' => str_repeat('*', 256) . '?',
+    ])->assertRedirect(route('login'));
 });
