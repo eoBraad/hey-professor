@@ -1,1 +1,1 @@
-<h1>Editando</h1>
+<h1>{{$question->question}}</h1>
