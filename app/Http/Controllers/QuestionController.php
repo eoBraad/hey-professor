@@ -47,4 +47,9 @@ class QuestionController extends Controller
 
         return back();
     }
+
+    public function edit(Question $question): View
+    {
+        return view('question.edit', ['question' => $question]);
+    }
 }
