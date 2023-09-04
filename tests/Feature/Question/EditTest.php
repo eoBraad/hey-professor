@@ -21,5 +21,5 @@ it('should return a view', function () {
 
     actingAs($user);
 
-    get(route('question.edit', $question))->assertViewIs('question.index');
+    get(route('question.edit', $question))->assertViewIs('question.edit');
 });
