@@ -23,7 +23,7 @@ class QuestionController extends Controller
                 'required',
                 'min:10',
                 function (string $attribute, mixed $value, Closure $fail) {
-                    if($value[strlen($value) - 1] != '?') {
+                    if ($value[strlen($value) - 1] != '?') {
                         $fail('Are you sure that is a question? It is missing the question mark in the end.');
                     }
                 },
@@ -64,7 +64,7 @@ class QuestionController extends Controller
                 'required',
                 'min:10',
                 function (string $attribute, mixed $value, Closure $fail) {
-                    if($value[strlen($value) - 1] != '?') {
+                    if ($value[strlen($value) - 1] != '?') {
                         $fail('Are you sure that is a question? It is missing the question mark in the end.');
                     }
                 },
@@ -82,6 +82,15 @@ class QuestionController extends Controller
         $this->authorize('archive', $question);
 
         $question->delete();
+
+        return back();
+    }
+
+    public function restore(int $id): RedirectResponse
+    {
+        $question = Question::withTrashed()->find($id);
+
+        $question->restore();
 
         return back();
     }
