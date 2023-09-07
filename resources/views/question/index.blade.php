@@ -8,7 +8,7 @@
     <x-container>
 
         <x-form :action="route('question.store')" method="POST">
-            <x-textarea name="question" label="Question" />
+            <x-textarea name="question" label="Question"/>
 
             <x-btn.primary type='submit'>Save</x-btn.primary>
             <x-btn.reset type='reset'>Cancel</x-btn.reset>
@@ -29,27 +29,29 @@
                     </tr>
                 </x-table.thead>
                 <tbody>
-                    @foreach($questions->where('draft', true) as $question)
-                        <x-table.tr>
-                            <x-table.td>{{$question->question}}</x-table.td>
-                            <x-table.td>
-                                <x-form :action="route('question.publish', $question)" put >
-                                    <button type="submit" class="hover:underline text-green-500">
-                                        Publish
-                                    </button>
-                                </x-form>
+                @foreach($questions->where('draft', true) as $question)
+                    <x-table.tr>
+                        <x-table.td>{{$question->question}}</x-table.td>
+                        <x-table.td>
+                            <x-form :action="route('question.publish', $question)" put>
+                                <button type="submit" class="hover:underline text-green-500">
+                                    Publish
+                                </button>
+                            </x-form>
 
-                                <a class="hover:underline text-blue-500" href="{{route('question.edit', $question)}}">Edit</a>
+                            <a class="hover:underline text-blue-500"
+                               href="{{route('question.edit', $question)}}">Edit</a>
 
-                                <x-form :action="route('question.destroy', $question)" delete onSubmit="return confirm('Tem certeza?')">
-                                    <button type="submit" class="hover:underline text-red-600">
-                                        Delete
-                                    </button>
-                                </x-form>
+                            <x-form :action="route('question.destroy', $question)" delete
+                                    onSubmit="return confirm('Tem certeza?')">
+                                <button type="submit" class="hover:underline text-red-600">
+                                    Delete
+                                </button>
+                            </x-form>
 
-                            </x-table.td>
-                        </x-table.tr>
-                    @endforeach
+                        </x-table.td>
+                    </x-table.tr>
+                @endforeach
                 </tbody>
             </x-table>
         </div>
@@ -74,13 +76,14 @@
                     <x-table.tr>
                         <x-table.td>{{$question->question}}</x-table.td>
                         <x-table.td>
-                            <x-form :action="route('question.destroy', $question)" delete onSubmit="return confirm('Tem certeza?')">
+                            <x-form :action="route('question.destroy', $question)" delete
+                                    onSubmit="return confirm('Tem certeza?')">
                                 <button type="submit" class="hover:underline text-red-600">
                                     Delete
                                 </button>
                             </x-form>
 
-                            <x-form :action="route('question.archive', $question)" patch >
+                            <x-form :action="route('question.archive', $question)" patch>
                                 <button type="submit" class="hover:underline text-purple-600">
                                     Archive
                                 </button>
@@ -112,13 +115,14 @@
                     <x-table.tr>
                         <x-table.td>{{$question->question}}</x-table.td>
                         <x-table.td>
-                            <x-form :action="route('question.destroy', $question)" delete onSubmit="return confirm('Tem certeza?')">
+                            <x-form :action="route('question.destroy', $question)" delete
+                                    onSubmit="return confirm('Tem certeza?')">
                                 <button type="submit" class="hover:underline text-red-600">
                                     Delete
                                 </button>
                             </x-form>
 
-                            <x-form :action="route('question.restore', $question)" patch >
+                            <x-form :action="route('question.restore', $question)" patch>
                                 <button type="submit" class="hover:underline text-amber-500">
                                     Restore
                                 </button>
